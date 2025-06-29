@@ -36,6 +36,27 @@
 <meta name="theme-color" content="{{ .Site.Params.seo.themeColor }}">
 <meta name="msapplication-TileColor" content="{{ .Site.Params.seo.themeColor }}">
 {{ end }}
+
+{{/* PWA and Mobile App Meta Tags */}}
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="px4n">
+<link rel="apple-touch-icon" href="/img/favicon/apple-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+
+{{/* Microsoft Tiles */}}
+<meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
+<meta name="msapplication-config" content="/browserconfig.xml">
 <link rel="canonical" href="{{ .Permalink }}">
 
 {{/* JSON-LD Structured Data */}}
@@ -73,6 +94,23 @@
   }{{ end }}
 }
 </script>
+
+{{/* Content Security Policy */}}
+{{/* Back to absolute minimal - only script-src and frame-src work with Cusdis */}}
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://cusdis.com; frame-src https://cusdis.com;">
+
+{{/* Additional Security Headers */}}
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="X-XSS-Protection" content="1; mode=block">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+{{/* Resource Preloading for Critical Assets */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://cusdis.com">
+<link rel="dns-prefetch" href="https://flagicons.lipis.dev">
 
 {{/* Link to humans.txt */}}
 <link type="text/plain" rel="author" href="{{ "/humans.txt" | absURL }}">

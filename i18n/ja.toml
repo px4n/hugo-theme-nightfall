@@ -53,3 +53,24 @@
 [next]
   other = "次へ"
 
+[blog]
+  other = "ブログ"
+
+[projects]
+  other = "プロジェクト"
+
+[retro_mode_activated]
+  other = "レトロモード起動 // マトリックスへようこそ"
+
+[normal_mode_restored]
+  other = "通常モード復元 // 現実世界へ戻りました"
+
+[console_welcome]
+  other = "マトリックスへようこそ、ハッカーさん！"
+
+[console_konami_hint]
+  other = "コナミコマンドを試してください: ↑↑↓↓←→←→BA"
+
+[console_shortcut_hint]
+  other = "またはCtrl+Shift+Tでクイックアクセス"
+

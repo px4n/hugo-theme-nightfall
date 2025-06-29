@@ -24,6 +24,17 @@
       --theme-color-dark: {{ if eq .Site.Params.styles.color "blue" }}#3366AA{{ else if eq .Site.Params.styles.color "orange" }}#AA7700{{ else if eq .Site.Params.styles.color "green" }}#226644{{ else if eq .Site.Params.styles.color "red" }}#AA3344{{ else }}{{ .Site.Params.styles.color }}{{ end }};
     }
   </style>
+  
+  {{/* Inject i18n translations for JavaScript */}}
+  <script>
+    window.i18n = {
+      retro_mode_activated: {{ i18n "retro_mode_activated" | jsonify }},
+      normal_mode_restored: {{ i18n "normal_mode_restored" | jsonify }},
+      console_welcome: {{ i18n "console_welcome" | jsonify }},
+      console_konami_hint: {{ i18n "console_konami_hint" | jsonify }},
+      console_shortcut_hint: {{ i18n "console_shortcut_hint" | jsonify }}
+    };
+  </script>
 {{ end }}
 
 {{/* Retro terminal mode styling for Konami code */}}

@@ -30,7 +30,7 @@
     {{ end }}
     
     <h1>{{ .Title }}</h1>
-    {{ if .Description}}
+    {{ if and .Description (.Params.showDescription | default false) }}
     	<p>{{.Description}}</p>
     {{ end }}
     {{ if .Params.showMetadata | default true }}

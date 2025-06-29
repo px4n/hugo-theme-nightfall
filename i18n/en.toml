@@ -53,3 +53,24 @@
 [next]
   other = "Next"
 
+[blog]
+  other = "Blog"
+
+[projects]
+  other = "Projects"
+
+[retro_mode_activated]
+  other = "RETRO_MODE_ACTIVATED // Welcome to the matrix"
+
+[normal_mode_restored]
+  other = "NORMAL_MODE_RESTORED // Back to the surface world"
+
+[console_welcome]
+  other = "Welcome to the matrix, fellow hacker!"
+
+[console_konami_hint]
+  other = "Try the Konami code: ↑↑↓↓←→←→BA"
+
+[console_shortcut_hint]
+  other = "Or use Ctrl+Shift+T for quick access"
+
