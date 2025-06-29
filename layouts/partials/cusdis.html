@@ -2,26 +2,33 @@
 {{/* Configure in hugo.toml: [params.cusdis] enable = true, app_id = "your-app-id" */}}
 {{ if and .Site.Params.cusdis.enable (not .Params.disableComments) }}
 <div class="comments-section">
-    <h3>Comments</h3>
+    <h3>{{ i18n "comments" }}</h3>
     <div id="cusdis_thread"
          data-host="{{ .Site.Params.cusdis.host | default "https://cusdis.com" }}"
          data-app-id="{{ .Site.Params.cusdis.app_id }}"
-         data-page-id="{{ .RelPermalink }}"
+         data-page-id="{{ .RelPermalink }}-{{ .Site.Language.Lang }}"
          data-page-url="{{ .Permalink }}"
          data-page-title="{{ .Title }}"
          data-theme="dark">
     </div>
     
+    {{/* Load language-specific script before main Cusdis script */}}
+    {{/* Cusdis supported languages: zh-cn, zh-tw, ja, es, tr, pt-BR, oc, fr, id, ca, fi, ar */}}
+    {{ $supportedLangs := slice "zh-cn" "zh-tw" "ja" "es" "tr" "pt-BR" "oc" "fr" "id" "ca" "fi" "ar" }}
+    {{ if in $supportedLangs .Site.Language.Lang }}
+    <script defer src="https://cusdis.com/js/widget/lang/{{ .Site.Language.Lang }}.js"></script>
+    {{ end }}
+    
     <!-- Hidden div to dynamically change theme for retro mode -->
     <div id="cusdis_thread_retro" style="display: none;"
          data-host="{{ .Site.Params.cusdis.host | default "https://cusdis.com" }}"
          data-app-id="{{ .Site.Params.cusdis.app_id }}"
-         data-page-id="{{ .RelPermalink }}"
+         data-page-id="{{ .RelPermalink }}-{{ .Site.Language.Lang }}"
          data-page-url="{{ .Permalink }}"
          data-page-title="{{ .Title }}"
          data-theme="dark">
     </div>
-    <script async defer src="https://cusdis.com/js/cusdis.es.js" integrity="sha384-1Oz+j+3LY0fCYZj/aBE5xEGQkkYqhlXlq2zVH1TFjrzFHCE8qJZqDvNPM5R5B5bx" crossorigin="anonymous"></script>
+    <script async defer src="https://cusdis.com/js/cusdis.es.js" integrity="sha384-K8JQBqTnKbFxb1EJ2OmQbJzrCtUjB4unTDO9yt8PQpm2Vyk+IFYeCQzl5founzmx" crossorigin="anonymous"></script>
 </div>
 
 <style>

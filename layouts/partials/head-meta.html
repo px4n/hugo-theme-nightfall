@@ -9,7 +9,12 @@
 {{ else }}
 <meta property="og:image" content="{{ .Site.Params.author.avatar | absURL }}">
 {{ end }}
-<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+<meta property="og:locale" content="{{ .Site.Language.Lang }}">
+{{ if hugo.IsMultilingual }}
+{{ range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{ end }}
+{{ end }}
 
 {{/* Twitter Card Meta Tags */}}
 <meta name="twitter:card" content="summary">

@@ -43,3 +43,4 @@
   {{ $konamiJS = $konamiJS | js.Build | minify | fingerprint }}
   <script src="{{ $konamiJS.RelPermalink }}" integrity="{{ $konamiJS.Data.Integrity }}"></script>
 {{ end }}
+

@@ -1,6 +1,6 @@
 {{ partial "ascii-art.html" . }}
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{ .Site.Language.Lang }}"{{ if hugo.IsMultilingual }} dir="{{ .Site.Language.LanguageDirection | default "ltr" }}"{{ end }}>
 
 <head>
     <!-- Document Title -->

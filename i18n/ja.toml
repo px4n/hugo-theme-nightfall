@@ -1,0 +1,55 @@
+[not_found]
+    other = "見つかりません"
+
+[not_found_desc]
+    other = "存在しないページにアクセスしました..."
+
+[home]
+    other = "ホーム"
+
+[published]
+    other = "公開日"
+
+[reading_time]
+    other = "読了時間"
+
+[reading_time_desc]
+  one = "1分"
+  other = "{{ .Count }}分"
+
+[authors]
+  other = "著者"
+
+[tags]
+  other = "タグ"
+
+[categories]
+  other = "カテゴリ"
+
+[and]
+  other = "と"
+
+[powered_by]
+  other = "構築"
+
+[theme]
+  other = "テーマ"
+
+[comments]
+  other = "コメント"
+
+[last_modified]
+  other = "最終更新"
+
+[date_format]
+  other = "2006年1月2日 15:04"
+
+[date_format_short]
+  other = "2006年1月2日"
+
+[previous]
+  other = "前へ"
+
+[next]
+  other = "次へ"
+

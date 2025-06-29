@@ -1,5 +1,5 @@
 {{ define "title"}}
-404 - Page Not Found | {{ .Site.Params.author.name }}
+404 - {{ i18n "not_found" }} | {{ .Site.Params.author.name }}
 {{ end }}
 
 {{ define "main"}}
@@ -13,8 +13,8 @@
         <div class="terminalOutput">
             <p>$ ls -la {{ .RelPermalink }}</p>
             <p class="errorText">ls: cannot access '{{ .RelPermalink }}': No such file or directory</p>
-            <p>$ echo "Houston, we have a problem..."</p>
-            <p class="glitch">Houston, we have a problem...</p>
+            <p>$ echo "{{ i18n "not_found_desc" }}"</p>
+            <p class="glitch">{{ i18n "not_found_desc" }}</p>
             <p>$ whoami</p>
             <p>lost_user</p>
             <p>$ pwd</p>
@@ -32,19 +32,19 @@
             
             <h3>Available Routes:</h3>
             <div class="navigationSuggestions">
-                <a href="/" class="errorButton">
-                    <i class="fas fa-home"></i> ~/ (Home)
+                <a href="{{ "/" | relLangURL }}" class="errorButton">
+                    <i class="fas fa-home"></i> ~/ ({{ i18n "home" }})
                 </a>
-                <a href="/blog" class="errorButton">
+                <a href="{{ "/blog" | relLangURL }}" class="errorButton">
                     <i class="fas fa-blog"></i> ~/blog
                 </a>
-                <a href="/projects" class="errorButton">
+                <a href="{{ "/projects" | relLangURL }}" class="errorButton">
                     <i class="fas fa-code"></i> ~/projects
                 </a>
-                <a href="/articles" class="errorButton">
+                <a href="{{ "/articles" | relLangURL }}" class="errorButton">
                     <i class="fas fa-newspaper"></i> ~/articles
                 </a>
-                <a href="/about" class="errorButton">
+                <a href="{{ "/about" | relLangURL }}" class="errorButton">
                     <i class="fas fa-user"></i> ~/about
                 </a>
             </div>

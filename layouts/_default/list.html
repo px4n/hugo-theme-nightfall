@@ -34,10 +34,12 @@
                     <span class="postTitle">{{ .Title }}</span>
                     {{ if eq .Site.Params.listStyle "minimal" }}
                         {{ $formattedDateTime := .Date.Format "2006-01-02T15:04:05Z07:00" }}
-                        <time class="postDate" datetime="{{ $formattedDateTime }}">{{ .Date.Format "Jan 2, 2006 at 15:04" }}</time>
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <time class="postDate" datetime="{{ $formattedDateTime }}">{{ .Date.Format $dateFormat }}</time>
                     {{ else }}
                         {{ $formattedDate := .Date.Format "2006-01-02" }}
-                        <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date | time.Format ":date_long" }}</time>
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date.Format $dateFormat }}</time>
                     {{ end }}
                 </div>
                 {{ if eq .Site.Params.listStyle "minimal" }}

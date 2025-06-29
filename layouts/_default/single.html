@@ -18,7 +18,7 @@
             {{ else }}
                 {{ $sectionName = printf "%ss" (title $section) }}
             {{ end }}
-            <a href="/{{ $section }}/" class="backButton">← Back to {{ $sectionName }}</a>
+            <a href="{{ printf "/%s/" $section | relLangURL }}" class="backButton">← Back to {{ $sectionName }}</a>
         </div>
     {{ end }}
     
@@ -48,13 +48,15 @@
             {{ if .Site.Params.published | default true }}
                 <dt>{{ i18n "published" }}</dt>
                 {{ $formattedDateTime := .Date.Format "2006-01-02T15:04:05Z07:00" }}
-                <dd><time datetime="{{ $formattedDateTime }}">{{ .Date.Format "Jan 2, 2006 at 15:04" }}</time></dd>
+                {{ $dateFormat := i18n "date_format" }}
+                <dd><time datetime="{{ $formattedDateTime }}">{{ .Date.Format $dateFormat }}</time></dd>
             {{ end }}
             {{ if .Lastmod }}
                 {{ if ne (.Date.Format "2006-01-02") (.Lastmod.Format "2006-01-02") }}
-                    <dt>last modified</dt>
+                    <dt>{{ i18n "last_modified" }}</dt>
                     {{ $formattedLastmodDateTime := .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}
-                    <dd><time datetime="{{ $formattedLastmodDateTime }}">{{ .Lastmod.Format "Jan 2, 2006 at 15:04" }}</time></dd>
+                    {{ $dateFormat := i18n "date_format" }}
+                    <dd><time datetime="{{ $formattedLastmodDateTime }}">{{ .Lastmod.Format $dateFormat }}</time></dd>
                 {{ end }}
             {{ end }}
             {{ if .Site.Params.readingTime | default true }}
@@ -72,14 +74,14 @@
     <nav class="postNavigation">
         {{ with .PrevInSection }}
             <a href="{{ .Permalink }}" class="navButton navButton--prev">
-                <span class="navLabel">← Previous</span>
+                <span class="navLabel">← {{ i18n "previous" }}</span>
                 <span class="navTitle">{{ .Title }}</span>
             </a>
         {{ end }}
         
         {{ with .NextInSection }}
             <a href="{{ .Permalink }}" class="navButton navButton--next">
-                <span class="navLabel">Next →</span>
+                <span class="navLabel">{{ i18n "next" }} →</span>
                 <span class="navTitle">{{ .Title }}</span>
             </a>
         {{ end }}

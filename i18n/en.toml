@@ -34,3 +34,22 @@
 
 [theme]
   other = "theme"
+
+[comments]
+  other = "Comments"
+
+[last_modified]
+  other = "last modified"
+
+[date_format]
+  other = "Jan 2, 2006 at 15:04"
+
+[date_format_short]
+  other = "Jan 2, 2006"
+
+[previous]
+  other = "Previous"
+
+[next]
+  other = "Next"
+

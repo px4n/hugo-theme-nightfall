@@ -7,6 +7,11 @@
         </div>
         <input class="side-menu" type="checkbox" id="side-menu">
         <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        {{ if hugo.IsMultilingual }}
+        <div class="header-center">
+            {{ partial "language-switcher.html" . }}
+        </div>
+        {{ end }}
         <nav class="headerLinks">
             <ul>
                 {{ range .Site.Menus.header }}
