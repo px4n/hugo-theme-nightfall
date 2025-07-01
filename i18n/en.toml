@@ -26,6 +26,9 @@
 [categories]
   other = "categories"
 
+[series]
+  other = "Series"
+
 [and]
   other = "and"
 
@@ -42,7 +45,7 @@
   other = "last modified"
 
 [date_format]
-  other = "Jan 2, 2006 at 15:04"
+  other = "Jan 2, 2006 at 15:04 MST"
 
 [date_format_short]
   other = "Jan 2, 2006"
@@ -52,6 +55,24 @@
 
 [next]
   other = "Next"
+
+[current]
+  other = "current"
+
+[error_analysis]
+  other = "Error Analysis:"
+
+[available_routes]
+  other = "Available Routes:"
+
+[bug_report_message]
+  other = "🤖 If you believe this is a bug, please report it to the system administrator."
+
+[konami_hint]
+  other = "💡 Psst... try the Konami code for a surprise: ↑↑↓↓←→←→BA"
+
+[back_to]
+  other = "← Back to"
 
 [blog]
   other = "Blog"
@@ -73,4 +94,83 @@
 
 [console_shortcut_hint]
   other = "Or use Ctrl+Shift+T for quick access"
+
+[status]
+  other = "Status"
+
+[cause]
+  other = "Cause"
+
+[impact]
+  other = "Impact"
+
+[resolution]
+  other = "Resolution"
+
+[http_404_message]
+  other = "HTTP 404 - Resource Not Found"
+
+[filesystem_error]
+  other = "The requested path does not exist in the filesystem"
+
+[user_experience_interrupted]
+  other = "User experience interrupted, navigation failed"
+
+[redirect_instruction]
+  other = "Redirect to known good paths below"
+
+[articles]
+  other = "Articles"
+
+[series_other_posts]
+  other = "Other posts in the %s series:"
+
+[series_description]
+  other = "A collection of related posts"
+
+[series_available]
+  other = "Series available on this site"
+
+[built_with]
+  other = "Built with Hugo & Nightfall theme"
+
+[hosted_on]
+  other = "Hosted on"
+
+[generated]
+  other = "Generated"
+
+[source]
+  other = "Source"
+
+[post]
+  one = "post"
+  other = "posts"
+
+[personal_homepage]
+  other = "Personal homepage"
+
+[tags_available]
+  other = "Tags available on this site"
+
+[tag_posts_description]
+  other = "Posts tagged with"
+
+[category_posts_description]
+  other = "Posts in category"
+
+[categories_available]
+  other = "Categories available on this site"
+
+[categories_description]
+  other = "A collection of posts organized by category"
+
+[back_to_all_tags]
+  other = "← Back to all tags"
+
+[back_to_all_categories]
+  other = "← Back to all categories"
+
+[back_to_all_series]
+  other = "← Back to all series"
 

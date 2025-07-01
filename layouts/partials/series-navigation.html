@@ -1,0 +1,39 @@
+{{/* Series navigation - shows other posts in the same series */}}
+{{ $currentPage := . }}
+{{ range .GetTerms "series" }}
+    {{ $seriesName := .Title }}
+    {{ $seriesPermalink := .Permalink }}
+    {{ $seriesPosts := .Pages.ByDate }}
+    {{ if gt (len $seriesPosts) 1 }}
+        <section class="seriesNavigation">
+            {{ $seriesLink := printf "<a href=\"%s\">%s</a>" $seriesPermalink $seriesName }}
+            <div class="seriesDescription"><em>{{ printf (i18n "series_other_posts") $seriesLink | safeHTML }}</em></div>
+            <ol class="seriesList">
+                {{ range $index, $post := $seriesPosts }}
+                    <li{{ if eq $post.Permalink $currentPage.Permalink }} class="current"{{ end }}>
+                        {{ if eq $post.Permalink $currentPage.Permalink }}
+                            <strong>{{ $post.Title }}</strong> <em>({{ i18n "current" | default "current" }})</em>
+                        {{ else }}
+                            <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
+                        {{ end }}
+                    </li>
+                {{ end }}
+            </ol>
+        </section>
+    {{ end }}
+{{ end }}
+
+<style>
+.seriesDescription {
+    background: rgba(var(--theme-color-rgb, 242, 110, 116), 0.1);
+    border: 1px solid rgba(var(--theme-color-rgb, 242, 110, 116), 0.2);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color, inherit);
+}
+
+.seriesNavigation {
+    margin-top: 1rem;
+}
+</style>

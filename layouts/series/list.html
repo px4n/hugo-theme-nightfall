@@ -3,39 +3,20 @@
 {{ end }}
 
 {{ define "main" }}
-
 <div>
     <div class="listHeader">
-        {{ $section := .Section }}
-        {{ $sectionTitle := .Title }}
-        {{ if eq $section "blog" }}
-            {{ $sectionTitle = i18n "blog" }}
-        {{ else if eq $section "project" }}
-            {{ $sectionTitle = i18n "projects" }}
-        {{ else if eq $section "article" }}
-            {{ $sectionTitle = i18n "articles" }}
-        {{ else if eq .Type "tags" }}
-            {{ $sectionTitle = printf "%s: %s" (i18n "tags" | title) .Title }}
-        {{ else if eq .Type "categories" }}
-            {{ $sectionTitle = printf "%s: %s" (i18n "categories" | title) .Title }}
-        {{ else if eq .Type "series" }}
-            {{ $sectionTitle = printf "%s: %s" (i18n "series" | title) .Title }}
-        {{ end }}
-        <h1>{{ $sectionTitle }}</h1>
-        {{ if and (eq .Type "tags") (ne .Title "Tags") }}
-            <p>{{ i18n "tag_posts_description" }} <strong>{{ .Title }}</strong></p>
-            <div class="backToTaxonomy">
-                <a href="{{ "/tags" | relLangURL }}" class="backButton">{{ i18n "back_to_all_tags" }}</a>
-            </div>
-        {{ else if and (eq .Type "categories") (ne .Title "Categories") }}
-            <p>{{ i18n "category_posts_description" }} <strong>{{ .Title }}</strong></p>
-            <div class="backToTaxonomy">
-                <a href="{{ "/categories" | relLangURL }}" class="backButton">{{ i18n "back_to_all_categories" }}</a>
-            </div>
-        {{ else if and (eq .Type "series") (ne .Title "Series") }}
-            <div class="backToTaxonomy">
-                <a href="{{ "/series" | relLangURL }}" class="backButton">{{ i18n "back_to_all_series" }}</a>
-            </div>
+        <h1>{{ .Title }}</h1>
+        {{ if .Description }}
+            <p>{{ .Description }}</p>
+        {{ else }}
+            {{/* Get series description from site params */}}
+            {{ $seriesName := .Title | lower }}
+            {{ $description := index .Site.Params.series.descriptions $seriesName }}
+            {{ if $description }}
+                <p>{{ $description }}</p>
+            {{ else }}
+                <p>{{ i18n "series_description" }}</p>
+            {{ end }}
         {{ end }}
     </div>
 
@@ -46,10 +27,9 @@
     {{ end }}
 
     <div>
+        
         {{ range .Pages }}
-
         <a class="postListLink" href="{{ .Permalink }}">
-            <!-- [html-validate-disable-next prefer-native-element] -->
             <div class="postListItem{{ if eq .Site.Params.listStyle "minimal" }} postListItem--minimal{{ end }}" role="listitem">
                 <div class="postHeader">
                     <span class="postTitle">{{ .Title }}</span>
@@ -76,9 +56,7 @@
                 {{ end }}
             </div>
         </a>
-
         {{end}}
     </div>
 </div>
-
 {{ end }}

@@ -10,15 +10,15 @@
         <div class="backToSection">
             {{ $sectionName := title $section }}
             {{ if eq $section "blog" }}
-                {{ $sectionName = "Blog" }}
+                {{ $sectionName = i18n "blog" }}
             {{ else if eq $section "project" }}
-                {{ $sectionName = "Projects" }}
+                {{ $sectionName = i18n "projects" }}
             {{ else if eq $section "article" }}
-                {{ $sectionName = "Articles" }}
+                {{ $sectionName = i18n "articles" }}
             {{ else }}
-                {{ $sectionName = printf "%ss" (title $section) }}
+                {{ $sectionName = title $section }}
             {{ end }}
-            <a href="{{ printf "/%s/" $section | relLangURL }}" class="backButton">← Back to {{ $sectionName }}</a>
+            <a href="{{ printf "/%s/" $section | relLangURL }}" class="backButton">{{ i18n "back_to" }} {{ $sectionName }}</a>
         </div>
     {{ end }}
     
@@ -36,6 +36,9 @@
     {{ if .Params.showMetadata | default true }}
     <section class="postMetadata">
         <dl>
+            {{ with .GetTerms "series" }}
+                {{ partial "taxonomy/series.html" . }}
+            {{ end }}
             {{ with .GetTerms "tags" }}
                 {{ partial "taxonomy/tags.html" . }}
             {{ end }}
@@ -70,6 +73,11 @@
         {{ .Content }}
     </div>
     
+    <!-- Series navigation -->
+    <div style="margin-top: 3rem;">
+        {{ partial "series-navigation.html" . }}
+    </div>
+    
     <!-- Previous/Next navigation -->
     <nav class="postNavigation">
         {{ with .PrevInSection }}
@@ -89,4 +97,33 @@
     
     {{ partial "cusdis.html" . }}
 </div>
+
+<style>
+.postCover {
+    position: relative;
+    overflow: hidden;
+}
+
+.postCover img {
+    width: 100%;
+    filter: brightness(0.75);
+}
+
+.postCover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+    );
+    pointer-events: none;
+}
+</style>
 {{ end }}

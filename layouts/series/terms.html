@@ -1,0 +1,24 @@
+{{ define "title"}}
+{{ i18n "series" | title }} | {{ .Site.Params.author.name }}
+{{ end }}
+
+{{ define "main" }}
+<div>
+    <div class="listHeader">
+        <h1>{{ i18n "series" | title }}</h1>
+        <p>{{ i18n "series_available" }}</p>
+    </div>
+
+    <div class="taxonomyTerms">
+        {{ range .Pages.ByTitle }}
+        <div class="taxonomyTerm">
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p>{{ .Pages | len }} {{ i18n "post" (.Pages | len) }}</p>
+            {{ if .Content }}
+                <div class="taxonomyDescription">{{ .Content }}</div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

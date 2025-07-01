@@ -1,0 +1,8 @@
+{{/* Series taxonomy display partial */}}
+<dt>{{ i18n "series" | lower }}</dt>
+<dd>
+    {{ range $index, $series := . }}
+        {{ if $index }}, {{ end }}
+        <a href="{{ .Permalink }}" class="series-link">{{ .LinkTitle }}</a>
+    {{ end }}
+</dd>
