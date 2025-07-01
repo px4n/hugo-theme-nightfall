@@ -1,5 +1,5 @@
 {{ define "title"}}
-404 - Page Not Found | {{ .Site.Params.author.name }}
+404 - {{ i18n "not_found" }} | {{ .Site.Params.author.name }}
 {{ end }}
 
 {{ define "main"}}
@@ -13,8 +13,8 @@
         <div class="terminalOutput">
             <p>$ ls -la {{ .RelPermalink }}</p>
             <p class="errorText">ls: cannot access '{{ .RelPermalink }}': No such file or directory</p>
-            <p>$ echo "Houston, we have a problem..."</p>
-            <p class="glitch">Houston, we have a problem...</p>
+            <p>$ echo "{{ i18n "not_found_desc" }}"</p>
+            <p class="glitch">{{ i18n "not_found_desc" }}</p>
             <p>$ whoami</p>
             <p>lost_user</p>
             <p>$ pwd</p>
@@ -22,36 +22,36 @@
         </div>
         
         <div class="errorHelp">
-            <h3>Error Analysis:</h3>
+            <h3>{{ i18n "error_analysis" }}</h3>
             <ul>
-                <li><strong>Status:</strong> HTTP 404 - Resource Not Found</li>
-                <li><strong>Cause:</strong> The requested path does not exist in the filesystem</li>
-                <li><strong>Impact:</strong> User experience interrupted, navigation failed</li>
-                <li><strong>Resolution:</strong> Redirect to known good paths below</li>
+                <li><strong>{{ i18n "status" }}:</strong> {{ i18n "http_404_message" }}</li>
+                <li><strong>{{ i18n "cause" }}:</strong> {{ i18n "filesystem_error" }}</li>
+                <li><strong>{{ i18n "impact" }}:</strong> {{ i18n "user_experience_interrupted" }}</li>
+                <li><strong>{{ i18n "resolution" }}:</strong> {{ i18n "redirect_instruction" }}</li>
             </ul>
             
-            <h3>Available Routes:</h3>
+            <h3>{{ i18n "available_routes" }}</h3>
             <div class="navigationSuggestions">
-                <a href="/" class="errorButton">
-                    <i class="fas fa-home"></i> ~/ (Home)
+                <a href="{{ "/" | relLangURL }}" class="errorButton">
+                    <i class="fas fa-home"></i> ~/ ({{ i18n "home" }})
                 </a>
-                <a href="/blog" class="errorButton">
+                <a href="{{ "/blog" | relLangURL }}" class="errorButton">
                     <i class="fas fa-blog"></i> ~/blog
                 </a>
-                <a href="/projects" class="errorButton">
+                <a href="{{ "/projects" | relLangURL }}" class="errorButton">
                     <i class="fas fa-code"></i> ~/projects
                 </a>
-                <a href="/articles" class="errorButton">
+                <a href="{{ "/articles" | relLangURL }}" class="errorButton">
                     <i class="fas fa-newspaper"></i> ~/articles
                 </a>
-                <a href="/about" class="errorButton">
+                <a href="{{ "/about" | relLangURL }}" class="errorButton">
                     <i class="fas fa-user"></i> ~/about
                 </a>
             </div>
             
             <div class="errorFooter">
-                <p>🤖 If you believe this is a bug, please report it to the system administrator.</p>
-                <p class="konamiHint">💡 <em>Psst... try the Konami code for a surprise: ↑↑↓↓←→←→BA</em></p>
+                <p>{{ i18n "bug_report_message" }}</p>
+                <p class="konamiHint">{{ i18n "konami_hint" }}</p>
             </div>
         </div>
     </div>

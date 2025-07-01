@@ -1,0 +1,175 @@
+[not_found]
+  other = "見つかりません"
+
+[not_found_desc]
+  other = "存在しないページにアクセスしました..."
+
+[home]
+  other = "ホーム"
+
+[published]
+  other = "公開日"
+
+[reading_time]
+  other = "読了時間"
+
+[reading_time_desc]
+  one   = "1分"
+  other = "{{ .Count }}分"
+
+[authors]
+  other = "著者"
+
+[tags]
+  other = "タグ"
+
+[categories]
+  other = "カテゴリ"
+
+[series]
+  other = "シリーズ"
+
+[and]
+  other = "と"
+
+[powered_by]
+  other = "構築"
+
+[theme]
+  other = "テーマ"
+
+[comments]
+  other = "コメント"
+
+[last_modified]
+  other = "最終更新"
+
+[date_format]
+  other = "2006年1月2日 15:04 JST"
+
+[date_format_short]
+  other = "2006年1月2日"
+
+[previous]
+  other = "前へ"
+
+[next]
+  other = "次へ"
+
+[current]
+  other = "現在"
+
+[error_analysis]
+  other = "エラー分析:"
+
+[available_routes]
+  other = "利用可能なルート:"
+
+[bug_report_message]
+  other = "🤖 これがバグだと思われる場合は、システム管理者に報告してください。"
+
+[konami_hint]
+  other = "💡 こっそり教えるよ... サプライズのためにコナミコードを試してみて: ↑↑↓↓←→←→BA"
+
+[back_to]
+  other = "← 戻る"
+
+[blog]
+  other = "ブログ"
+
+[projects]
+  other = "プロジェクト"
+
+[retro_mode_activated]
+  other = "レトロモード起動 // マトリックスへようこそ"
+
+[normal_mode_restored]
+  other = "通常モード復元 // 現実世界へ戻りました"
+
+[console_welcome]
+  other = "マトリックスへようこそ、ハッカーさん！"
+
+[console_konami_hint]
+  other = "コナミコマンドを試してください: ↑↑↓↓←→←→BA"
+
+[console_shortcut_hint]
+  other = "またはCtrl+Shift+Tでクイックアクセス"
+
+[status]
+  other = "ステータス"
+
+[cause]
+  other = "原因"
+
+[impact]
+  other = "影響"
+
+[resolution]
+  other = "解決方法"
+
+[http_404_message]
+  other = "HTTP 404 - リソースが見つかりません"
+
+[filesystem_error]
+  other = "要求されたパスがファイルシステムに存在しません"
+
+[user_experience_interrupted]
+  other = "ユーザーエクスペリエンスが中断され、ナビゲーションが失敗しました"
+
+[redirect_instruction]
+  other = "以下の既知の正常なパスにリダイレクトしてください"
+
+[articles]
+  other = "記事"
+
+[series_other_posts]
+  other = "%s シリーズ"
+
+[series_description]
+  other = "関連記事をまとめたシリーズ"
+
+[series_available]
+  other = "このサイトで利用可能なシリーズ"
+
+[built_with]
+  other = "Hugo & Nightfallテーマで構築"
+
+[hosted_on]
+  other = "ホスト先"
+
+[generated]
+  other = "生成日時"
+
+[source]
+  other = "ソース"
+
+[post]
+  one   = "記事"
+  other = "記事"
+
+[personal_homepage]
+  other = "個人ホームページ"
+
+[tags_available]
+  other = "このサイトで利用可能なタグ"
+
+[tag_posts_description]
+  other = "タグ付けされた記事"
+
+[category_posts_description]
+  other = "カテゴリの記事"
+
+[categories_available]
+  other = "このサイトで利用可能なカテゴリ"
+
+[categories_description]
+  other = "カテゴリ別に整理された記事のコレクション"
+
+[back_to_all_tags]
+  other = "← すべてのタグに戻る"
+
+[back_to_all_categories]
+  other = "← すべてのカテゴリに戻る"
+
+[back_to_all_series]
+  other = "← すべてのシリーズに戻る"

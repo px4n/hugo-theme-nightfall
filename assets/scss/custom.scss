@@ -137,27 +137,17 @@ a:hover {
   transition: border-bottom 0.1s ease !important;
 }
 
-/* Remove underline from social icons */
+/* Remove underline and make icons inherit color */
 .socialNavbar a:hover {
   border-bottom: none !important;
 }
 
-/* Universal social links hover effects */
-.socialNavbar a {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  position: relative !important;
-  display: inline-block !important;
-}
-
-.socialNavbar a:hover {
-  transform: translateY(-3px) scale(1.1) !important;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) !important;
-  animation: subtle-bounce 0.6s ease-in-out !important;
-}
-
-/* Icons get pulsing glow effect */
 .socialNavbar a:hover i {
-  animation: pulse-glow 1.5s ease-in-out infinite !important;
+  color: inherit !important;
+}
+
+.socialNavbar a:hover .custom-icon {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(100%) saturate(2000%) hue-rotate(332deg) brightness(105%) contrast(97%) !important;
 }
 
 /* Text-only links get color change and glow */
@@ -425,3 +415,102 @@ a:hover {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
+
+/* Header layout with language switcher in center */
+.header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.header > div:first-child {
+  flex: 1 !important;
+}
+
+.header-center {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 2rem !important;
+}
+
+.headerLinks {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+/* Language switcher styling */
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.language-switcher-item {
+  margin-left: 1rem !important;
+}
+
+/* Flag-based language switcher styling */
+.flag-link, .flag-current {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.2rem !important;
+  border-bottom: 2px solid transparent !important;
+  transition: all 0.1s ease !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  position: relative !important;
+}
+
+.flag-link:hover {
+  border-bottom: 2px solid var(--theme-color) !important;
+}
+
+.flag-current {
+  border-bottom: 2px solid var(--theme-color) !important;
+}
+
+.flag-icon {
+  width: 1.5rem !important;
+  height: 1.125rem !important;
+  border-radius: 2px !important;
+  transition: all 0.1s ease !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* Legacy styles for backward compatibility */
+.lang-link:not(.flag-link) {
+  color: #aaa !important;
+  text-decoration: none !important;
+  padding: 0.2rem 0.5rem !important;
+  border: 1px solid #444 !important;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  transition: all 0.1s ease !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
+
+.lang-link:not(.flag-link):hover {
+  color: var(--theme-color) !important;
+  border-color: var(--theme-color) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid var(--theme-color) !important;
+}
+
+.lang-current:not(.flag-current) {
+  color: var(--theme-color) !important;
+  padding: 0.2rem 0.5rem !important;
+  border: 1px solid var(--theme-color) !important;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+

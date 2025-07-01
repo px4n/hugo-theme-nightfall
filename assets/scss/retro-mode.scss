@@ -22,6 +22,19 @@ body.retro-mode a:hover {
   text-shadow: 0 0 10px #ffffff;
 }
 
+/* Social icons specifically in retro mode */
+body.retro-mode .socialNavbar a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px #ffffff !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  filter: drop-shadow(0 6px 12px rgba(255, 255, 255, 0.4)) !important;
+}
+
+body.retro-mode .socialNavbar a:hover i {
+  color: #ffffff !important;
+  filter: drop-shadow(0 0 8px #ffffff) !important;
+}
+
 body.retro-mode .navButton {
   background: #001100 !important;
   border-color: #00ff00 !important;

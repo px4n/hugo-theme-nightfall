@@ -1,0 +1,62 @@
+{{ define "title"}}
+{{ .Title }} | {{ .Site.Params.author.name }}
+{{ end }}
+
+{{ define "main" }}
+<div>
+    <div class="listHeader">
+        <h1>{{ .Title }}</h1>
+        {{ if .Description }}
+            <p>{{ .Description }}</p>
+        {{ else }}
+            {{/* Get series description from site params */}}
+            {{ $seriesName := .Title | lower }}
+            {{ $description := index .Site.Params.series.descriptions $seriesName }}
+            {{ if $description }}
+                <p>{{ $description }}</p>
+            {{ else }}
+                <p>{{ i18n "series_description" }}</p>
+            {{ end }}
+        {{ end }}
+    </div>
+
+    {{ with .Content }}
+    <div class="listContent">
+        {{- . -}}
+    </div>
+    {{ end }}
+
+    <div>
+        
+        {{ range .Pages }}
+        <a class="postListLink" href="{{ .Permalink }}">
+            <div class="postListItem{{ if eq .Site.Params.listStyle "minimal" }} postListItem--minimal{{ end }}" role="listitem">
+                <div class="postHeader">
+                    <span class="postTitle">{{ .Title }}</span>
+                    {{ if eq .Site.Params.listStyle "minimal" }}
+                        {{ $formattedDateTime := .Date.Format "2006-01-02T15:04:05Z07:00" }}
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <time class="postDate" datetime="{{ $formattedDateTime }}">{{ .Date.Format $dateFormat }}</time>
+                    {{ else }}
+                        {{ $formattedDate := .Date.Format "2006-01-02" }}
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date.Format $dateFormat }}</time>
+                    {{ end }}
+                </div>
+                {{ if eq .Site.Params.listStyle "minimal" }}
+                    {{ with .GetTerms "tags" }}
+                        <span class="postTags">
+                            {{ range $index, $tag := . }}{{ if $index }}<span style="margin-right: 0.5rem;"></span>{{ end }}#{{ $tag.Name }}{{ end }}
+                        </span>
+                    {{ end }}
+                {{ else }}
+                    <div class="postExcerpt">
+                        <p>{{ .Summary }}</p>
+                    </div>
+                {{ end }}
+            </div>
+        </a>
+        {{end}}
+    </div>
+</div>
+{{ end }}

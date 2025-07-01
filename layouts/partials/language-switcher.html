@@ -1,0 +1,57 @@
+{{/* Language switcher for multilingual support */}}
+{{ if hugo.IsMultilingual }}
+<div class="language-switcher">
+    {{ range .Site.Languages }}
+        {{ if ne .Lang $.Site.Language.Lang }}
+            {{ $langPath := "" }}
+            {{ if $.IsTranslated }}
+                {{ range $.Translations }}
+                    {{ if eq .Language.Lang .Lang }}
+                        {{ $langPath = .RelPermalink }}
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+            {{ if not $langPath }}
+                {{ $currentLang := .Lang }}
+                {{ $isDefaultLang := false }}
+                {{ range $.Site.Languages }}
+                    {{ if and (eq .Lang $currentLang) (eq .Weight 1) }}
+                        {{ $isDefaultLang = true }}
+                    {{ end }}
+                {{ end }}
+                {{ if $isDefaultLang }}
+                    {{ $langPath = "/" }}
+                {{ else }}
+                    {{ $langPath = printf "/%s/" .Lang }}
+                {{ end }}
+            {{ end }}
+            {{ $flagCode := "" }}
+            {{ if eq .Lang "ja" }}
+                {{ $flagCode = "jp" }}
+            {{ else if eq .Lang "en" }}
+                {{ $flagCode = "gb" }}
+            {{ end }}
+            <a href="{{ $langPath }}"
+               class="lang-link flag-link"
+               title="{{ .LanguageName }}"
+               hreflang="{{ .Lang }}">
+                <img src="/img/flags/4x3/{{ $flagCode }}.svg"
+                     alt="{{ .LanguageName }}"
+                     class="flag-icon">
+            </a>
+        {{ else }}
+            {{ $flagCode := "" }}
+            {{ if eq .Lang "ja" }}
+                {{ $flagCode = "jp" }}
+            {{ else if eq .Lang "en" }}
+                {{ $flagCode = "gb" }}
+            {{ end }}
+            <span class="lang-current flag-current">
+                <img src="/img/flags/4x3/{{ $flagCode }}.svg"
+                     alt="{{ .LanguageName }}"
+                     class="flag-icon">
+            </span>
+        {{ end }}
+    {{ end }}
+</div>
+{{ end }}

@@ -15,5 +15,28 @@
     -webkit-font-smoothing: antialiased;
     display: inline-block;
     margin: 10px;
+    
+    // Custom icon styles to match Font Awesome behavior
+    .custom-icon {
+      vertical-align: -0.35em; // Lower to match Font Awesome alignment
+      display: inline-block;
+      
+      // Match Font Awesome sizing classes exactly
+      &.fa-xs { width: 0.75em; height: 0.75em; }
+      &.fa-sm { width: 0.875em; height: 0.875em; }
+      &.fa-lg { width: 1.25em; height: 1.25em; }
+      &.fa-xl { width: 1.25em; height: 1.25em; }
+      &.fa-2xl { width: 1.5em; height: 1.5em; }
+      &.fa-1x { width: 1em; height: 1em; }
+      &.fa-2x { width: 2em; height: 2em; }
+      &.fa-3x { width: 3em; height: 3em; }
+      &.fa-4x { width: 4em; height: 4em; }
+      &.fa-5x { width: 5em; height: 5em; }
+      &.fa-6x { width: 6em; height: 6em; }
+      &.fa-7x { width: 7em; height: 7em; }
+      &.fa-8x { width: 8em; height: 8em; }
+      &.fa-9x { width: 9em; height: 9em; }
+      &.fa-10x { width: 10em; height: 10em; }
+    }
   }
 }

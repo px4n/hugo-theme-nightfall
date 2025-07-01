@@ -26,7 +26,8 @@
     
     if (retroModeActive) {
       const authorName = document.querySelector('.indexHeader')?.textContent || 'user';
-      showNotification(`RETRO_MODE_ACTIVATED // Welcome to the matrix, ${authorName}`);
+      const activatedMessage = window.i18n?.retro_mode_activated || 'RETRO_MODE_ACTIVATED // Welcome to the matrix';
+      showNotification(`${activatedMessage}, ${authorName}`);
       
       // Add terminal-style typing effect to page title
       const title = document.querySelector('h1');
@@ -48,7 +49,8 @@
       }
       
     } else {
-      showNotification('NORMAL_MODE_RESTORED // Back to the surface world');
+      const restoredMessage = window.i18n?.normal_mode_restored || 'NORMAL_MODE_RESTORED // Back to the surface world';
+      showNotification(restoredMessage);
       
       // Restore original title
       const title = document.querySelector('h1');
@@ -96,6 +98,10 @@
   // Wait for DOM to load, then show console easter egg
   document.addEventListener('DOMContentLoaded', function() {
     const author = getAuthorInfo();
+    const welcomeMsg = window.i18n?.console_welcome || 'Welcome to the matrix, fellow hacker!';
+    const konamiHint = window.i18n?.console_konami_hint || 'Try the Konami code: ↑↑↓↓←→←→BA';
+    const shortcutHint = window.i18n?.console_shortcut_hint || 'Or use Ctrl+Shift+T for quick access';
+    
     console.log(`
   ╔══════════════════════════════════════╗
   ║                                      ║
@@ -103,10 +109,10 @@
   ║                                      ║
   ╚══════════════════════════════════════╝
   
-  Welcome to the matrix, fellow hacker!
+  ${welcomeMsg}
   
-  Try the Konami code: ↑↑↓↓←→←→BA
-  Or use Ctrl+Shift+T for quick access
+  ${konamiHint}
+  ${shortcutHint}
   
   > whoami
   ${author.desc}

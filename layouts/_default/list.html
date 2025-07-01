@@ -9,13 +9,34 @@
         {{ $section := .Section }}
         {{ $sectionTitle := .Title }}
         {{ if eq $section "blog" }}
-            {{ $sectionTitle = "Blog" }}
+            {{ $sectionTitle = i18n "blog" }}
         {{ else if eq $section "project" }}
-            {{ $sectionTitle = "Projects" }}
+            {{ $sectionTitle = i18n "projects" }}
         {{ else if eq $section "article" }}
-            {{ $sectionTitle = "Articles" }}
+            {{ $sectionTitle = i18n "articles" }}
+        {{ else if eq .Type "tags" }}
+            {{ $sectionTitle = printf "%s: %s" (i18n "tags" | title) .Title }}
+        {{ else if eq .Type "categories" }}
+            {{ $sectionTitle = printf "%s: %s" (i18n "categories" | title) .Title }}
+        {{ else if eq .Type "series" }}
+            {{ $sectionTitle = printf "%s: %s" (i18n "series" | title) .Title }}
         {{ end }}
         <h1>{{ $sectionTitle }}</h1>
+        {{ if and (eq .Type "tags") (ne .Title "Tags") }}
+            <p>{{ i18n "tag_posts_description" }} <strong>{{ .Title }}</strong></p>
+            <div class="backToTaxonomy">
+                <a href="{{ "/tags" | relLangURL }}" class="backButton">{{ i18n "back_to_all_tags" }}</a>
+            </div>
+        {{ else if and (eq .Type "categories") (ne .Title "Categories") }}
+            <p>{{ i18n "category_posts_description" }} <strong>{{ .Title }}</strong></p>
+            <div class="backToTaxonomy">
+                <a href="{{ "/categories" | relLangURL }}" class="backButton">{{ i18n "back_to_all_categories" }}</a>
+            </div>
+        {{ else if and (eq .Type "series") (ne .Title "Series") }}
+            <div class="backToTaxonomy">
+                <a href="{{ "/series" | relLangURL }}" class="backButton">{{ i18n "back_to_all_series" }}</a>
+            </div>
+        {{ end }}
     </div>
 
     {{ with .Content }}
@@ -34,16 +55,18 @@
                     <span class="postTitle">{{ .Title }}</span>
                     {{ if eq .Site.Params.listStyle "minimal" }}
                         {{ $formattedDateTime := .Date.Format "2006-01-02T15:04:05Z07:00" }}
-                        <time class="postDate" datetime="{{ $formattedDateTime }}">{{ .Date.Format "Jan 2, 2006 at 15:04" }}</time>
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <time class="postDate" datetime="{{ $formattedDateTime }}">{{ .Date.Format $dateFormat }}</time>
                     {{ else }}
                         {{ $formattedDate := .Date.Format "2006-01-02" }}
-                        <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date | time.Format ":date_long" }}</time>
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date.Format $dateFormat }}</time>
                     {{ end }}
                 </div>
                 {{ if eq .Site.Params.listStyle "minimal" }}
                     {{ with .GetTerms "tags" }}
                         <span class="postTags">
-                            {{ range $index, $tag := . }}{{ if $index }}<span style="margin-right: 0.5rem;"></span>{{ end }}#{{ $tag.LinkTitle }}{{ end }}
+                            {{ range $index, $tag := . }}{{ if $index }}<span style="margin-right: 0.5rem;"></span>{{ end }}#{{ $tag.Name }}{{ end }}
                         </span>
                     {{ end }}
                 {{ else }}

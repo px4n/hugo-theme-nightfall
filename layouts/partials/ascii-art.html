@@ -1,6 +1,6 @@
 {{/* ASCII art header - customizable via params.customAsciiArt or falls back to default px4n art */}}
 {{ $siteName := .Site.Title | default (.Site.Params.hostname | default "website") }}
-{{ $description := .Site.Params.author.bio | default .Site.Params.author.tagline | default .Site.Params.site.tagline | default .Site.Params.sitedescription | default "Personal homepage" }}
+{{ $description := .Site.Params.author.bio | default .Site.Params.author.tagline | default .Site.Params.site.tagline | default .Site.Params.sitedescription | default (i18n "personal_homepage") }}
 
 {{ "<!--" | safeHTML }}
 {{ if .Site.Params.customAsciiArt }}
@@ -17,11 +17,11 @@
   {{ $siteName | plainify }}
   {{ $description }}
 
-  Built with Hugo & Nightfall theme
-  Hosted on: {{ .Site.BaseURL }}
-  Generated: {{ now.Format "2006-01-02 15:04:05 MST" }}
+  {{ i18n "built_with" }}
+  {{ i18n "hosted_on" }}: {{ .Site.BaseURL }}
+  {{ i18n "generated" }}: {{ now.Format "2006-01-02 15:04:05 MST" }}
 
-  Try the Konami code: ↑↑↓↓←→←→BA
+  {{ i18n "console_konami_hint" }}
 
-  Source: {{ .Site.Params.author.sourceRepo | default .Site.BaseURL }}
+  {{ i18n "source" }}: {{ .Site.Params.author.sourceRepo | default .Site.BaseURL }}
 {{ "-->" | safeHTML }}
