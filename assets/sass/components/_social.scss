@@ -1,26 +1,54 @@
+/* ============================================================================
+   SOCIAL NAVBAR COMPONENT - NIGHTFALL THEME
+   ============================================================================
+
+   Purpose: All social media icon styling and functionality
+   Dependencies: ../utils/variables
+   Related files:
+   - layouts/partials/social.html (template)
+   - hugo.toml (social configuration)
+   - retro-mode.scss (retro mode overrides)
+
+   Features:
+   - Font Awesome icon support
+   - Custom icon support (Qiita, Annict, etc.)
+   - Hover effects and transitions
+   - Responsive sizing
+   - Theme color integration
+   ============================================================================ */
+
 @use "../utils/variables" as v;
 
+/* BASE SOCIAL NAVBAR STYLES
+   -------------------------------------------------------------------------- */
 
 .socialNavbar {
   ul {
     list-style: none;
     padding: 0;
+
     li {
       display: inline;
+      margin: 0 1rem !important; // Spacing between social icons
     }
   }
+
   a {
     color: v.$white;
     text-shadow: v.$black 0px 0px 2px;
     -webkit-font-smoothing: antialiased;
     display: inline-block;
     margin: 10px;
-    
+    font-size: 2rem !important; // Base font size for Font Awesome sizing to work
+
+    /* CUSTOM ICON SUPPORT
+       ---------------------------------------------------------------------- */
+
     // Custom icon styles to match Font Awesome behavior
     .custom-icon {
-      vertical-align: -0.35em; // Lower to match Font Awesome alignment
+      vertical-align: -0.30em; // Lower to match Font Awesome alignment
       display: inline-block;
-      
+
       // Match Font Awesome sizing classes exactly
       &.fa-xs { width: 0.75em; height: 0.75em; }
       &.fa-sm { width: 0.875em; height: 0.875em; }
@@ -38,5 +66,33 @@
       &.fa-9x { width: 9em; height: 9em; }
       &.fa-10x { width: 10em; height: 10em; }
     }
+
+    /* HOVER EFFECTS AND TRANSITIONS
+       ---------------------------------------------------------------------- */
+
+    // Always reserve space for border to prevent content shift
+    border-bottom: 5px solid transparent !important;
+    padding-bottom: 8px !important; // Add space between icon and underline
+    transition: border-color 0.1s ease !important;
+
+    &:hover {
+      // Change border color instead of adding/removing border  
+      border-bottom-color: var(--theme-color) !important;
+    }
+  }
+}
+
+/* RETRO MODE SOCIAL EFFECTS
+   -------------------------------------------------------------------------- */
+
+body.retro-mode .socialNavbar a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px #ffffff !important;
+  transform: translateY(-3px) scale(1.1) !important;
+  filter: drop-shadow(0 6px 12px rgba(255, 255, 255, 0.4)) !important;
+
+  i {
+    color: #ffffff !important;
+    filter: drop-shadow(0 0 8px #ffffff) !important;
   }
 }
