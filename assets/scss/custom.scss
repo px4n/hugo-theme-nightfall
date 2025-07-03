@@ -1,5 +1,21 @@
-/* External fonts and icons loaded via partial for SRI security */
+/* ============================================================================
+   CUSTOM THEME OVERRIDES FOR NIGHTFALL HUGO THEME
+   ============================================================================
 
+   Purpose: Site-wide custom styling and theme overrides
+   Dependencies: Nightfall theme base styles, CSS custom properties
+   Related files:
+   - sass/components/_social.scss (social media icons)
+   - scss/retro-mode.scss (easter egg mode)
+   - js/konami.js (retro mode activation)
+   - js/navigation.js (active page highlighting)
+   
+   ============================================================================ */
+
+/* GLOBAL BACKGROUND AND LAYOUT
+   -------------------------------------------------------------------------- */
+
+/* Subtle background image overlay */
 body::before {
   content: '';
   position: fixed;
@@ -21,21 +37,23 @@ body::before {
   z-index: 1;
 }
 
-/* Full-width layout override */
+/* RESPONSIVE LAYOUT OVERRIDES
+   -------------------------------------------------------------------------- */
+
+/* Full-width layout for larger screens */
 @media only screen and (min-width: 992px) {
   .main {
     width: 50% !important;
     max-width: none !important;
   }
-  
-  /* Make header full-width too */
+
   .header {
     width: 50% !important;
     max-width: none !important;
   }
 }
 
-/* Optional: Make content area wider too */
+/* Content area width adjustments */
 .postWrapper {
   max-width: none;
   width: 100%;
@@ -48,13 +66,25 @@ body::before {
   width: 100%;
 }
 
-/* Increase author name size */
+/* THEME COLOR SYSTEM
+   -------------------------------------------------------------------------- */
+
+/* CSS custom properties for dynamic theming */
+:root {
+  --theme-color: #80AADD; /* Default blue, will be overridden by Hugo */
+  --theme-color-dark: #3366AA; /* Default blue dark, will be overridden by Hugo */
+}
+
+/* TYPOGRAPHY AND HOMEPAGE STYLING
+   -------------------------------------------------------------------------- */
+
+/* Author name styling */
 .indexHeader {
   font-size: 3.5rem !important;
   margin-bottom: 0 !important;
 }
 
-/* Author description styling */
+/* Author description with Ruby text (furigana) support */
 .authorDescription {
   font-size: 1.3rem;
   font-weight: 100;
@@ -63,145 +93,36 @@ body::before {
   margin-bottom: 1.5rem;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-style: normal;
-}
-
-/* Ruby text (furigana) styling */
-.authorDescription ruby {
-  ruby-align: center;
-}
-
-.authorDescription rt {
-  font-size: 0.7rem;
-  color: #aaa;
-  font-weight: 100;
-  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
-}
-
-/* Better spacing around separators */
-.authorDescription {
   word-spacing: 0.3rem;
   letter-spacing: 0.05rem;
+
+  /* Ruby text (furigana) styling */
+  ruby {
+    ruby-align: center;
+  }
+
+  rt {
+    font-size: 0.7rem;
+    color: #aaa;
+    font-weight: 100;
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+  }
 }
 
-/* Force Font Awesome size classes to work by boosting their specificity */
-.socialNavbar a i.fa-xs { 
-  font-size: 0.75em !important; 
-  line-height: 0.08333em !important; 
-  vertical-align: 0.125em !important; 
-}
-.socialNavbar a i.fa-sm { 
-  font-size: 0.875em !important; 
-  line-height: 0.07143em !important; 
-  vertical-align: 0.05357em !important; 
-}
-.socialNavbar a i.fa-lg { 
-  font-size: 1.25em !important; 
-  line-height: 0.05em !important; 
-  vertical-align: -0.075em !important; 
-}
-.socialNavbar a i.fa-xl { 
-  font-size: 1.5em !important; 
-  line-height: 0.04167em !important; 
-  vertical-align: -0.125em !important; 
-}
-.socialNavbar a i.fa-2xl { 
-  font-size: 2em !important; 
-  line-height: 0.03125em !important; 
-  vertical-align: -0.1875em !important; 
-}
+/* GLOBAL LINK AND HOVER EFFECTS
+   -------------------------------------------------------------------------- */
 
-.socialNavbar ul li {
-  margin: 0 1rem !important;
-}
-
-/* Set base font-size for social icons so FA sizing works properly */
-.socialNavbar a {
-  font-size: 2rem !important;
-}
-
-/* Force inline styles to work with maximum specificity */
-.socialNavbar a[style*="color"] i {
-  color: inherit !important;
-}
-
-/* Dynamic theme color CSS variables - will be injected by Hugo */
-:root {
-  --theme-color: #80AADD; /* Default blue, will be overridden */
-  --theme-color-dark: #3366AA; /* Default blue dark, will be overridden */
-}
-
-/* Thick underline hover effect with dynamic theme color */
+/* Default link hover effect with thick underline */
 a:hover {
   text-decoration: none !important;
   border-bottom: 5px solid var(--theme-color) !important;
   transition: border-bottom 0.1s ease !important;
 }
 
-/* Remove underline and make icons inherit color */
-.socialNavbar a:hover {
-  border-bottom: none !important;
-}
+/* NAVIGATION STYLING
+   -------------------------------------------------------------------------- */
 
-.socialNavbar a:hover i {
-  color: inherit !important;
-}
-
-.socialNavbar a:hover .custom-icon {
-  filter: brightness(0) saturate(100%) invert(50%) sepia(100%) saturate(2000%) hue-rotate(332deg) brightness(105%) contrast(97%) !important;
-}
-
-/* Text-only links get color change and glow */
-.socialNavbar a:hover:not([title]):not([aria-label*="Profile"]) {
-  color: var(--theme-color) !important;
-  text-shadow: 0 0 8px var(--theme-color) !important;
-}
-
-/* Fallback for any text-only social link */
-.socialNavbar a:hover {
-  color: var(--theme-color) !important;
-  text-shadow: 0 0 3px rgba(242, 110, 116, 0.3) !important;
-}
-
-/* Brand-specific glow colors for icons */
-.socialNavbar a[href*="github"]:hover i {
-  filter: drop-shadow(0 0 3px rgba(36, 41, 46, 0.4)) !important;
-}
-
-.socialNavbar a[href*="twitter"]:hover i,
-.socialNavbar a[href*="x.com"]:hover i {
-  filter: drop-shadow(0 0 3px rgba(3, 169, 243, 0.4)) !important;
-}
-
-.socialNavbar a[href*="linkedin"]:hover i {
-  filter: drop-shadow(0 0 3px rgba(10, 102, 194, 0.4)) !important;
-}
-
-.socialNavbar a[href*="mailto"]:hover i {
-  filter: drop-shadow(0 0 3px rgba(242, 110, 116, 0.4)) !important;
-}
-
-.socialNavbar a[href*="pgp"]:hover i,
-.socialNavbar a[href*="key"]:hover i {
-  filter: drop-shadow(0 0 3px rgba(242, 110, 116, 0.4)) !important;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { 
-    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
-    transform: scale(1);
-  }
-  50% { 
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
-    transform: scale(1.05);
-  }
-}
-
-@keyframes subtle-bounce {
-  0%, 100% { transform: translateY(-3px) scale(1.1); }
-  50% { transform: translateY(-5px) scale(1.12); }
-}
-
-/* Header navigation styling */
+/* Header navigation links */
 .headerLinks a {
   position: relative !important;
   padding-bottom: 4px !important;
@@ -209,34 +130,127 @@ a:hover {
   transition: all 0.1s ease !important;
 }
 
-.headerLinks a:hover {
-  border-bottom: 2px solid var(--theme-color) !important;
-  color: var(--theme-color) !important;
-}
-
-/* Active page highlighting */
+.headerLinks a:hover,
 .headerLinks a.active {
+  border-bottom: 2px solid var(--theme-color) !important;
   color: var(--theme-color) !important;
+}
+
+/* LANGUAGE SWITCHER LAYOUT
+   -------------------------------------------------------------------------- */
+
+/* Header layout with language switcher in center */
+.header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.header > div:first-child {
+  flex: 1 !important;
+}
+
+.header-center {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 2rem !important;
+}
+
+.headerLinks {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+/* Language switcher components */
+.language-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.language-switcher-item {
+  margin-left: 1rem !important;
+}
+
+/* Flag-based language switcher styling */
+.flag-link, .flag-current {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.2rem !important;
+  border-bottom: 2px solid transparent !important;
+  transition: all 0.1s ease !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  position: relative !important;
+}
+
+.flag-link:hover {
   border-bottom: 2px solid var(--theme-color) !important;
 }
 
-/* Default post list styling (with excerpts) */
-.postListLink {
-  text-decoration: none !important;
+.flag-current {
+  border-bottom: 2px solid var(--theme-color) !important;
+}
+
+.flag-icon {
+  width: 1.5rem !important;
+  height: 1.125rem !important;
+  border-radius: 2px !important;
+  transition: all 0.1s ease !important;
+  object-fit: cover !important;
   display: block !important;
 }
 
-/* Force left alignment for minimal list containers */
-.postListItem--minimal,
-.postListItem--minimal * {
-  text-align: left !important;
+/* Legacy text-based language switcher (backward compatibility) */
+.lang-link:not(.flag-link) {
+  color: #aaa !important;
+  text-decoration: none !important;
+  padding: 0.2rem 0.5rem !important;
+  border: 1px solid #444 !important;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  transition: all 0.1s ease !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
+
+.lang-link:not(.flag-link):hover {
+  color: var(--theme-color) !important;
+  border-color: var(--theme-color) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid var(--theme-color) !important;
+}
+
+.lang-current:not(.flag-current) {
+  color: var(--theme-color) !important;
+  padding: 0.2rem 0.5rem !important;
+  border: 1px solid var(--theme-color) !important;
+  border-radius: 4px !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* POST LIST STYLING
+   -------------------------------------------------------------------------- */
+
+/* Default post list links */
+.postListLink {
+  text-decoration: none !important;
+  display: block !important;
 }
 
 .postListLink:hover {
   border-bottom: none !important;
 }
 
-/* Override centering for minimal list style */
+/* Minimal post list styling */
 .postListItem--minimal {
   background: none !important;
   border: none !important;
@@ -246,8 +260,8 @@ a:hover {
   text-align: left !important;
 }
 
-/* Ensure parent container is also left-aligned for minimal style */
-.postListItem--minimal ~ * {
+.postListItem--minimal,
+.postListItem--minimal * {
   text-align: left !important;
 }
 
@@ -255,7 +269,7 @@ a:hover {
   background: none !important;
 }
 
-/* Stylish gradient separator line */
+/* Stylish gradient separator line between posts */
 .postListItem--minimal::after {
   content: '';
   position: absolute;
@@ -271,6 +285,7 @@ a:hover {
   display: none;
 }
 
+/* Post list item components */
 .postListItem--minimal .postHeader {
   display: inline-block;
   margin-bottom: 0.3rem;
@@ -305,7 +320,10 @@ a:hover {
   font-style: italic;
 }
 
-/* Back to section button styling */
+/* POST NAVIGATION AND CONTENT
+   -------------------------------------------------------------------------- */
+
+/* Back to section button */
 .backToSection {
   margin-bottom: 2rem;
 }
@@ -330,12 +348,11 @@ a:hover {
   gap: 2rem;
 }
 
-/* When only next button exists, align it to the right */
+/* Navigation button alignment (uses modern :has() selector) */
 .postNavigation:has(.navButton--next:only-child) {
   justify-content: flex-end;
 }
 
-/* When only prev button exists, align it to the left */
 .postNavigation:has(.navButton--prev:only-child) {
   justify-content: flex-start;
 }
@@ -379,6 +396,9 @@ a:hover {
   line-height: 1.3;
 }
 
+/* POST CONTENT STYLING
+   -------------------------------------------------------------------------- */
+
 /* Cover image styling */
 .postCover {
   margin: 2rem 0;
@@ -394,6 +414,9 @@ a:hover {
   object-fit: cover;
   max-height: 400px;
 }
+
+/* TERMINAL EFFECTS FOR THEME ELEMENTS
+   -------------------------------------------------------------------------- */
 
 /* Terminal header styling */
 .terminal-dollar {
@@ -416,101 +439,9 @@ a:hover {
   51%, 100% { opacity: 0; }
 }
 
-/* Header layout with language switcher in center */
-.header {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-}
+/* ============================================================================
+   END OF CUSTOM THEME OVERRIDES
 
-.header > div:first-child {
-  flex: 1 !important;
-}
-
-.header-center {
-  flex: 0 0 auto !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin: 0 2rem !important;
-}
-
-.headerLinks {
-  flex: 1 !important;
-  display: flex !important;
-  justify-content: flex-end !important;
-}
-
-/* Language switcher styling */
-.language-switcher {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.language-switcher-item {
-  margin-left: 1rem !important;
-}
-
-/* Flag-based language switcher styling */
-.flag-link, .flag-current {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0.2rem !important;
-  border-bottom: 2px solid transparent !important;
-  transition: all 0.1s ease !important;
-  text-decoration: none !important;
-  background: transparent !important;
-  position: relative !important;
-}
-
-.flag-link:hover {
-  border-bottom: 2px solid var(--theme-color) !important;
-}
-
-.flag-current {
-  border-bottom: 2px solid var(--theme-color) !important;
-}
-
-.flag-icon {
-  width: 1.5rem !important;
-  height: 1.125rem !important;
-  border-radius: 2px !important;
-  transition: all 0.1s ease !important;
-  object-fit: cover !important;
-  display: block !important;
-}
-
-/* Legacy styles for backward compatibility */
-.lang-link:not(.flag-link) {
-  color: #aaa !important;
-  text-decoration: none !important;
-  padding: 0.2rem 0.5rem !important;
-  border: 1px solid #444 !important;
-  border-radius: 4px !important;
-  font-size: 0.8rem !important;
-  transition: all 0.1s ease !important;
-  text-transform: uppercase !important;
-  font-weight: 500 !important;
-}
-
-.lang-link:not(.flag-link):hover {
-  color: var(--theme-color) !important;
-  border-color: var(--theme-color) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-bottom: 1px solid var(--theme-color) !important;
-}
-
-.lang-current:not(.flag-current) {
-  color: var(--theme-color) !important;
-  padding: 0.2rem 0.5rem !important;
-  border: 1px solid var(--theme-color) !important;
-  border-radius: 4px !important;
-  font-size: 0.8rem !important;
-  text-transform: uppercase !important;
-  font-weight: 500 !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-}
-
+   NOTE: Social media icon styles are now in sass/components/_social.scss
+   NOTE: Retro mode styles are in scss/retro-mode.scss
+   ============================================================================ */

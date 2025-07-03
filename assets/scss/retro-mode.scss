@@ -1,4 +1,22 @@
-/* Konami Code Easter Egg - Retro Terminal Mode */
+/* ============================================================================
+   RETRO MODE STYLES - KONAMI CODE EASTER EGG
+   ============================================================================
+
+   Purpose: Terminal-style retro mode activated by Konami code
+   Dependencies: konami.js
+   Related files:
+   - js/konami.js (activation logic)
+   - _social.scss (social icon retro effects)
+
+   Features:
+   - Matrix-style green terminal look
+   - CRT scanline effects
+   - Notification system
+   - Global color overrides
+   ============================================================================ */
+
+/* BASE RETRO MODE STYLES
+   -------------------------------------------------------------------------- */
 body.retro-mode {
   background: #000 !important;
   color: #00ff00 !important;
@@ -22,18 +40,7 @@ body.retro-mode a:hover {
   text-shadow: 0 0 10px #ffffff;
 }
 
-/* Social icons specifically in retro mode */
-body.retro-mode .socialNavbar a:hover {
-  color: #ffffff !important;
-  text-shadow: 0 0 10px #ffffff !important;
-  transform: translateY(-3px) scale(1.1) !important;
-  filter: drop-shadow(0 6px 12px rgba(255, 255, 255, 0.4)) !important;
-}
-
-body.retro-mode .socialNavbar a:hover i {
-  color: #ffffff !important;
-  filter: drop-shadow(0 0 8px #ffffff) !important;
-}
+/* NOTE: Social icon retro effects moved to _social.scss for better organization */
 
 body.retro-mode .navButton {
   background: #001100 !important;
@@ -56,6 +63,9 @@ body.retro-mode #cusdis_thread iframe {
   filter: hue-rotate(60deg) saturate(3) contrast(1.4) brightness(1.1) !important;
 }
 
+/* CRT EFFECTS
+   -------------------------------------------------------------------------- */
+
 /* CRT scanline effect */
 body.retro-mode::after {
   content: '';
@@ -74,6 +84,9 @@ body.retro-mode::after {
   );
   z-index: 1000;
 }
+
+/* NOTIFICATION SYSTEM
+   -------------------------------------------------------------------------- */
 
 /* Terminal easter egg notification */
 .konami-notification {
@@ -102,6 +115,9 @@ body.retro-mode::after {
     opacity: 1;
   }
 }
+
+/* TERMINAL EFFECTS
+   -------------------------------------------------------------------------- */
 
 /* Blinking cursor effect */
 .terminal-cursor::after {
