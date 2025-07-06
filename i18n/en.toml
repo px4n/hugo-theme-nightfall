@@ -48,7 +48,7 @@
   other = "Jan 2, 2006 at 15:04 MST"
 
 [date_format_short]
-  other = "Jan 2, 2006"
+  other = "Jan 2, 2006 @ 15:04 MST"
 
 [previous]
   other = "Previous"
