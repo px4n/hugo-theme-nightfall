@@ -48,7 +48,7 @@
   other = "2006年1月2日 15:04 JST"
 
 [date_format_short]
-  other = "2006年1月2日"
+  other = "2006年1月2日 @ 15:04 JST"
 
 [previous]
   other = "前へ"

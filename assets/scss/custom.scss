@@ -9,8 +9,9 @@
    - scss/retro-mode.scss (easter egg mode)
    - js/konami.js (retro mode activation)
    - js/navigation.js (active page highlighting)
-   
+
    ============================================================================ */
+
 
 /* GLOBAL BACKGROUND AND LAYOUT
    -------------------------------------------------------------------------- */
@@ -91,7 +92,6 @@ body::before {
   color: #ccc;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-style: normal;
   word-spacing: 0.3rem;
   letter-spacing: 0.05rem;
@@ -103,9 +103,8 @@ body::before {
 
   rt {
     font-size: 0.7rem;
-    color: #aaa;
-    font-weight: 100;
-    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
+    // color: var(--theme-color-dark);
+    font-weight: 300;
   }
 }
 
@@ -132,7 +131,7 @@ a:hover {
 
 .headerLinks a:hover,
 .headerLinks a.active {
-  border-bottom: 2px solid var(--theme-color) !important;
+  border-bottom: 5px solid var(--theme-color) !important;
   color: var(--theme-color) !important;
 }
 
@@ -206,37 +205,6 @@ a:hover {
   display: block !important;
 }
 
-/* Legacy text-based language switcher (backward compatibility) */
-.lang-link:not(.flag-link) {
-  color: #aaa !important;
-  text-decoration: none !important;
-  padding: 0.2rem 0.5rem !important;
-  border: 1px solid #444 !important;
-  border-radius: 4px !important;
-  font-size: 0.8rem !important;
-  transition: all 0.1s ease !important;
-  text-transform: uppercase !important;
-  font-weight: 500 !important;
-}
-
-.lang-link:not(.flag-link):hover {
-  color: var(--theme-color) !important;
-  border-color: var(--theme-color) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-bottom: 1px solid var(--theme-color) !important;
-}
-
-.lang-current:not(.flag-current) {
-  color: var(--theme-color) !important;
-  padding: 0.2rem 0.5rem !important;
-  border: 1px solid var(--theme-color) !important;
-  border-radius: 4px !important;
-  font-size: 0.8rem !important;
-  text-transform: uppercase !important;
-  font-weight: 500 !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-}
-
 /* POST LIST STYLING
    -------------------------------------------------------------------------- */
 
@@ -254,8 +222,8 @@ a:hover {
 .postListItem--minimal {
   background: none !important;
   border: none !important;
-  padding: 1.2rem 0 !important;
-  margin: 0 !important;
+  padding: 0.8rem 0 !important;
+  margin: 0 0 1rem 0 !important;
   position: relative;
   text-align: left !important;
 }
@@ -288,15 +256,15 @@ a:hover {
 /* Post list item components */
 .postListItem--minimal .postHeader {
   display: inline-block;
-  margin-bottom: 0.3rem;
 }
 
 .postListItem--minimal .postTitle {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #ededed;
   display: inline;
-  transition: color 0.1s ease;
+  transition: color 0.2s ease;
 }
 
 .postListItem--minimal:hover .postTitle {
@@ -305,17 +273,19 @@ a:hover {
 }
 
 .postListItem--minimal .postDate {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #aaa;
   display: inline;
   margin-left: 1rem;
+  line-height: 1.5rem;
+  vertical-align: middle;
 }
 
 .postListItem--minimal .postTags {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  margin: -0.2rem 0;
   color: #666;
   display: block;
-  margin-top: -0.1rem;
   line-height: 1;
   font-style: italic;
 }
@@ -329,10 +299,12 @@ a:hover {
 }
 
 .backButton {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   color: #aaa;
   text-decoration: none;
   transition: color 0.1s ease;
+  display: inline-block;
+  padding: 0.2rem 0;
 }
 
 .backButton:hover {
@@ -438,6 +410,74 @@ a:hover {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
+
+/* TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+
+/* Global font smoothing for better rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base body text styling */
+body, p, li, dd {
+  font-weight: 300; /* Using Source Sans 3 Light */
+  font-size: 1.05em; /* Slightly larger to match Open Sans visual size */
+}
+
+/* Bold elements */
+strong, b, dt {
+  font-weight: 700 !important;
+}
+
+/* Heading hierarchy */
+h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.4; }
+h2::before { content: '〉'; } h2 { font-size: 2.3rem; font-weight: 800; line-height: 1.4; letter-spacing: 0.3em !important; margin-top: 3.5rem; margin-bottom: -0.5rem; }
+h3::before { content: '》 '; } h3 { font-size: 1.7rem; font-weight: 800; line-height: 1.4;  margin-top: 3rem; margin-bottom: -0.5rem; }
+h4 { font-size: 1.1rem; font-weight: 500; line-height: 1.4; }
+h5 { font-size: 1.0rem; font-weight: 500; line-height: 1.4; }
+h6 { font-size: 0.9rem; font-weight: 500; line-height: 1.4; }
+
+/* JAPANESE LANGUAGE OVERRIDES
+   -------------------------------------------------------------------------- */
+
+[lang="ja"] {
+  /* Define Japanese font stack once */
+  --ja-font-stack: 'M PLUS Rounded 1c', 'M PLUS 1p', 'Noto Sans JP', sans-serif;
+
+  /* Navigation and headers */
+  header,
+  .headerLinks a,
+  .header a,
+  nav a,
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ja-font-stack) !important;
+    letter-spacing: 0.02em;
+  }
+
+  /* Bold navigation links */
+  header,
+  .headerLinks a,
+  .header a,
+  nav a {
+    font-weight: 700 !important;
+  }
+
+  /* Body text with lighter weight */
+  body, p, li, dd {
+    font-family: var(--ja-font-stack) !important;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+
+  /* Bold text */
+  strong, b {
+    font-weight: 700;
+  }
+}
+
 
 /* ============================================================================
    END OF CUSTOM THEME OVERRIDES

@@ -16,7 +16,7 @@ a {
 
 pre code {
   font-family: v.$fontCode;
-  font-size: 75%;
+  font-size: 85%;
   display: block;
   background: v.$backgroundDarker;
   padding: 10px;
@@ -25,7 +25,7 @@ pre code {
 
 code {
   font-family: v.$fontCode;
-  font-size: 75%;
+  font-size: 85%;
 }
 
 @for $i from 1 through 6 {

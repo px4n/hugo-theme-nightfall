@@ -1,8 +1,16 @@
-@font-face{
+/* Fira Mono Fonts */
+@font-face {
+    font-family: "Fira Mono";
+    src: url("../fonts/FiraMono/FiraMono-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Fira Mono";
     src: url("../fonts/FiraMono/FiraMono-Medium.eot");
-    src: local("Fira Mono"),
-         url("../fonts/FiraMono/FiraMono-Medium.eot") format("embedded-opentype"),
+    src: local("Fira Mono Medium"),
+         url("../fonts/FiraMono/FiraMono-Medium.eot?#iefix") format("embedded-opentype"),
          url("../fonts/FiraMono/FiraMono-Medium.woff2") format("woff2"),
          url("../fonts/FiraMono/FiraMono-Medium.woff") format("woff"),
          url("../fonts/FiraMono/FiraMono-Medium.ttf") format("truetype");
@@ -11,12 +19,106 @@
 }
 
 @font-face {
+    font-family: "Fira Mono";
+    src: url("../fonts/FiraMono/FiraMono-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Open Sans Fonts */
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans/OpenSans-300.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Open Sans";
     src: url("../fonts/OpenSans/OpenSans-Regular.eot");
     src: url("../fonts/OpenSans/OpenSans-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/OpenSans/OpenSans-400.woff2") format("woff2"),
     url("../fonts/OpenSans/OpenSans-Regular.woff") format("woff"),
     url("../fonts/OpenSans/OpenSans-Regular.ttf") format("truetype"),
     url("../fonts/OpenSans/OpenSans-Regular.svg#OpenSansRegular") format("svg");
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
 }
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans/OpenSans-500.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans/OpenSans-600.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans/OpenSans-700.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Source Sans 3 Fonts - Similar to Open Sans but with lighter weights */
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../fonts/SourceSans3/SourceSans3-200.woff2") format("woff2");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../fonts/SourceSans3/SourceSans3-300.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../fonts/SourceSans3/SourceSans3-400.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../fonts/SourceSans3/SourceSans3-500.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../fonts/SourceSans3/SourceSans3-600.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans 3";
+    src: url("../fonts/SourceSans3/SourceSans3-700.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Variable font for smooth weight transitions */
+@font-face {
+    font-family: "Source Sans 3 VF";
+    src: url("../fonts/SourceSans3/SourceSans3-VF.woff2") format("woff2-variations");
+    font-weight: 200 900;
+    font-style: normal;
+}
+
+/* Import Noto Sans JP for Japanese text */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+
+/* Import retro/stylish Japanese fonts */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400;500;700;900&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;900&family=Kosugi+Maru&family=Sawarabi+Gothic&display=swap');
