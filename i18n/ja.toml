@@ -173,3 +173,6 @@
 
 [back_to_all_series]
   other = "← すべてのシリーズに戻る"
+
+[download_pdf]
+  other = "PDFをダウンロード"

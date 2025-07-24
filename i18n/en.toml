@@ -174,3 +174,6 @@
 [back_to_all_series]
   other = "← Back to all series"
 
+[download_pdf]
+  other = "Download PDF"
+

@@ -53,25 +53,35 @@
             <div class="postListItem{{ if eq .Site.Params.listStyle "minimal" }} postListItem--minimal{{ end }}" role="listitem">
                 <div class="postHeader">
                     <span class="postTitle">{{ .Title }}</span>
-                    {{ if eq .Site.Params.listStyle "minimal" }}
-                        {{ $formattedDateTime := .Date.Format "2006-01-02T15:04:05Z07:00" }}
-                        {{ $dateFormat := i18n "date_format_short" }}
-                        <time class="postDate" datetime="{{ $formattedDateTime }}">{{ .Date.Format $dateFormat }}</time>
-                    {{ else }}
-                        {{ $formattedDate := .Date.Format "2006-01-02" }}
-                        {{ $dateFormat := i18n "date_format_short" }}
-                        <time class="postDate" datetime="{{ $formattedDate }}">{{ .Date.Format $dateFormat }}</time>
-                    {{ end }}
                 </div>
                 {{ if eq .Site.Params.listStyle "minimal" }}
-                    {{ with .GetTerms "tags" }}
-                        <span class="postTags">
-                            {{ range $index, $tag := . }}{{ if $index }}<span style="margin-right: 0.5rem;"></span>{{ end }}#{{ $tag.Name }}{{ end }}
-                        </span>
-                    {{ end }}
+                    <div class="postMeta">
+                        {{ $formattedDateTime := .Date.Format "2006-01-02T15:04:05Z07:00" }}
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <span class="postMetaDivider">d:</span>
+                        <span class="postMetaText"><time class="postDate" datetime="{{ $formattedDateTime }}">{{ .Date.Format $dateFormat }}</time></span>
+                        {{ with .GetTerms "tags" }}
+                            <span class="postMetaDivider">t:</span>
+                            <span class="postMetaText">
+                                {{ range $index, $tag := . }}{{ if $index }} {{ end }}#{{ $tag.Name }}{{ end }}
+                            </span>
+                        {{ end }}
+                    </div>
                 {{ else }}
                     <div class="postExcerpt">
                         <p>{{ .Summary }}</p>
+                    </div>
+                    <div class="postMeta">
+                        {{ $formattedDate := .Date.Format "2006-01-02" }}
+                        {{ $dateFormat := i18n "date_format_short" }}
+                        <span class="postMetaDivider">d:</span>
+                        <span class="postMetaText"><time class="postDate" datetime="{{ $formattedDate }}">{{ .Date.Format $dateFormat }}</time></span>
+                        {{ with .GetTerms "tags" }}
+                            <span class="postMetaDivider">t:</span>
+                            <span class="postMetaText">
+                                {{ range $index, $tag := . }}{{ if $index }} {{ end }}#{{ $tag.Name }}{{ end }}
+                            </span>
+                        {{ end }}
                     </div>
                 {{ end }}
             </div>
